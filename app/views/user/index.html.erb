@@ -1,0 +1,30 @@
+
+<head>
+  <style>
+      table, th, td {
+          border: 1px solid;
+      }
+  </style>
+</head>
+
+<body style="background: black">
+<h1 style="color: darkred"><center><b><I><u>Users List</u></I></b></center></h1><br>
+
+<table id="myTable" class="table table-hovered">
+  <tr>
+    <thead class="thead-light">
+    <th style="background: #d3a914"><h3><u>ID</u></h3></th>
+    <th style="background: #d3a914"><h3><u>First Name</u></h3></th>
+    <th style="background: #d3a914"><h3><u>Last Name</u></h3></th>
+    </thead>
+  </tr>
+
+  <% @users.each do |user| %>
+    <tr>
+      <th style="background: yellow"><%= link_to user.id, user_photos_path(user.id) %></th>
+      <td style="background: yellow"><%= link_to user.first_name, user_photos_path(user.id) %></td>
+      <td style="background: yellow"><%= link_to user.last_name,user_photos_path(user.id) %></td>
+    </tr>
+  <% end %>
+</table>
+</body>

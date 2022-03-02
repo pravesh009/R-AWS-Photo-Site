@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Photo Site</title>
+</head>
+
+<body style="background: powderblue">
+<center>
+<div>
+  <h2><u><b><%= @user.first_name %> <%= @user.last_name %> Photos and Comments</b></u></h2><br>
+  <% @photos.each do |photo| %>
+
+    <!--      <p><%#=image_tag(photo.file_name) %></p>-->
+
+    <p style="border:3px; border-style:solid; border-color:#FF0000; padding: 1em;"><%=image_tag("https://praveshbucket001.s3.us-west-1.amazonaws.com/images/"+photo.file_name) %></p>
+    <!--  <p><%=image_tag("https://praveshbucket001.s3.us-west-1.amazonaws.com/images/"+photo.file_name) %></p>  -->
+    <div style="position: relative; border:5px; border-style:solid; border-color:#010418FF; padding: 1em;">
+      <p><b>Photo created at - </b> <%= photo.date_time %></p>
+
+      <% @comments.where("photo_id=?" ,photo.id).each do |comment| %>
+
+        <li> <b>Comment - </b> <%= comment.comment_text %></li>
+        <li> <b>Created at - </b> <%= comment.date_time %></li>
+        <li> <b>Posted by - </b> <%= link_to display_name(comment.user_id), user_photos_path(comment.user_id) %></li>
+
+
+
+
+
+        </div>
+
+
+
+    <% end %>
+    </ul>
+    <br>
+    <br>
+  <%end%>
+</div>
+</center>
+</body>
+</html>
